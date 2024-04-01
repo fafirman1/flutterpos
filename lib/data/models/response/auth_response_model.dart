@@ -1,3 +1,4 @@
+import 'package:meta/meta.dart';
 import 'dart:convert';
 
 class AuthResponseModel {
@@ -9,17 +10,17 @@ class AuthResponseModel {
         required this.token,
     });
 
-    factory AuthResponseModel.fromRawJson(String str) => AuthResponseModel.fromJson(json.decode(str));
+    factory AuthResponseModel.fromJson(String str) => AuthResponseModel.fromMap(json.decode(str));
 
-    String toRawJson() => json.encode(toJson());
+    String toJson() => json.encode(toMap());
 
-    factory AuthResponseModel.fromJson(Map<String, dynamic> json) => AuthResponseModel(
-        user: User.fromJson(json["user"]),
+    factory AuthResponseModel.fromMap(Map<String, dynamic> json) => AuthResponseModel(
+        user: User.fromMap(json["user"]),
         token: json["token"],
     );
 
-    Map<String, dynamic> toJson() => {
-        "user": user.toJson(),
+    Map<String, dynamic> toMap() => {
+        "user": user.toMap(),
         "token": token,
     };
 }
@@ -43,11 +44,11 @@ class User {
         required this.updatedAt,
     });
 
-    factory User.fromRawJson(String str) => User.fromJson(json.decode(str));
+    factory User.fromJson(String str) => User.fromMap(json.decode(str));
 
-    String toRawJson() => json.encode(toJson());
+    String toJson() => json.encode(toMap());
 
-    factory User.fromJson(Map<String, dynamic> json) => User(
+    factory User.fromMap(Map<String, dynamic> json) => User(
         id: json["id"],
         name: json["name"],
         email: json["email"],
@@ -57,7 +58,7 @@ class User {
         updatedAt: DateTime.parse(json["updated_at"]),
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<String, dynamic> toMap() => {
         "id": id,
         "name": name,
         "email": email,

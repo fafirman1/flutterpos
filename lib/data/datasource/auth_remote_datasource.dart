@@ -1,8 +1,8 @@
-import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import 'package:pos/core/constants/variables.dart';
+import 'package:pos/data/datasource/auth_local_datasource.dart';
 import 'package:pos/data/models/response/auth_response_model.dart';
 
 class AuthRemoteDatasource {
@@ -15,10 +15,22 @@ class AuthRemoteDatasource {
       }
     );
     if (response.statusCode==200) {
-      // Ubah response.body menjadi Map menggunakan jsonDecode()
-      Map<String, dynamic> responseBody = jsonDecode(response.body);
-      // Gunakan Map yang sudah di-decode untuk membuat AuthResponseModel
-      return right(AuthResponseModel.fromJson(responseBody));
+      return right(AuthResponseModel.fromJson(response.body));
+    } else {
+      return left(response.body);
+    } 
+  }
+
+  Future<Either<String, String>> logout() async{
+    final authData = await AuthLocalDatasource().getAuthData();
+    final response = await http.post(
+      Uri.parse('${Variables.baseUrl}/api/logout'),
+      headers: {
+        'Authorization' : 'Bearer ${authData.token}',
+      }
+    );
+    if (response.statusCode==200) {
+      return right(response.body);
     } else {
       return left(response.body);
     } 
