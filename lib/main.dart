@@ -4,9 +4,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pos/core/constants/colors.dart';
 import 'package:pos/data/datasource/auth_local_datasource.dart';
 import 'package:pos/data/datasource/auth_remote_datasource.dart';
+import 'package:pos/data/datasource/product_remote_datasource.dart';
 import 'package:pos/presentation/auth/bloc/login/login_bloc.dart';
 import 'package:pos/presentation/auth/pages/login_page.dart';
 import 'package:pos/presentation/home/bloc/logout/logout_bloc.dart';
+import 'package:pos/presentation/home/bloc/product/product_bloc.dart';
 import 'package:pos/presentation/home/pages/dashboard_page.dart';
 
 void main() {
@@ -25,6 +27,10 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => LogoutBloc(AuthRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => ProductBloc(ProductRemoteDatasource())
+          ..add(const ProductEvent.fetch()),
         ),
       ],
       child: MaterialApp(
