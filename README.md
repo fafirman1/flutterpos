@@ -1,4 +1,4 @@
-# pos
+# Aplikasi Pos Mobile Moko Wardah Perfume
 
 A new Flutter project.
 

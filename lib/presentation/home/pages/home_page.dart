@@ -57,11 +57,13 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     // searchResults = products;
+    // context.read<ProductBloc>().add(const ProductEvent.fecthLocal());
     super.initState();
   }
 
   void onCategoryTap(int index) {
     searchController.clear();
+    indexValue.value=index;
     String category = 'all';
     switch (index) {
       case 0:
@@ -126,7 +128,7 @@ class _HomePageState extends State<HomePage> {
                   MenuButton(
                     iconPath: Assets.icons.drink.path,
                     label: 'Sweet',
-                    isActive: value == 1,
+                    isActive: value == 2,
                     onPressed: () => onCategoryTap(2),
                   ),
                   const SpaceWidth(10.0),

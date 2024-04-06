@@ -45,7 +45,11 @@ class ProductCard extends StatelessWidget {
                 
                 imageUrl: '${Variables.imageBaseUrl}${data.image}',
                 placeholder: (context, url) => const CircularProgressIndicator(),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
+                errorWidget: (context, url, error) => 
+                const Icon(
+                  Icons.error, 
+                  size: 80,
+                ),
               ),
             ),
           ),

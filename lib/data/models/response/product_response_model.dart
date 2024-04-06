@@ -37,8 +37,8 @@ class Product {
     final int stock;
     final String category;
     final String image;
-    final DateTime createdAt;
-    final DateTime updatedAt;
+    final DateTime? createdAt;
+    final DateTime? updatedAt;
 
     Product({
         required this.id,
@@ -48,8 +48,8 @@ class Product {
         required this.stock,
         required this.category,
         required this.image,
-        required this.createdAt,
-        required this.updatedAt,
+         this.createdAt,
+         this.updatedAt,
     });
 
     factory Product.fromJson(String str) => Product.fromMap(json.decode(str));
@@ -59,24 +59,20 @@ class Product {
     factory Product.fromMap(Map<String, dynamic> json) => Product(
         id: json["id"],
         name: json["name"],
-        description: json["description"],
+        description: json["description"] ?? '',
         price: json["price"],
         stock: json["stock"],
         category: json["category"],
-        image: json["image"],
-        createdAt: DateTime.parse(json["created_at"]),
-        updatedAt: DateTime.parse(json["updated_at"]),
+        image: json["image"] ?? '',
+        // createdAt: DateTime.parse(json["created_at"]),
+        // updatedAt: DateTime.parse(json["updated_at"]),
     );
 
     Map<String, dynamic> toMap() => {
-        "id": id,
         "name": name,
-        "description": description,
         "price": price,
         "stock": stock,
         "category": category,
         "image": image,
-        "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt.toIso8601String(),
     };
 }

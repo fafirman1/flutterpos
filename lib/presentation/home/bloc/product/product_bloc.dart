@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:pos/data/datasource/product_local_datasource.dart';
 
 import 'package:pos/data/datasource/product_remote_datasource.dart';
 import 'package:pos/data/models/response/product_response_model.dart';
@@ -25,6 +26,14 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
           emit(ProductState.success(r.data));
         },
       );
+    });
+
+    on<_FetchLocal>((event, emit) async {
+      emit(const ProductState.loading());
+      final localProducts = 
+          await ProductLocalDatasource.instance.getAllProduct();
+      products = localProducts;
+      emit(ProductState.success(localProducts));
     });
 
     on<_FetchByCategory>((event, emit) async {
