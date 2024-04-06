@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos/core/assets/assets.gen.dart';
 import 'package:pos/core/constants/colors.dart';
-import 'package:pos/data/datasource/auth_local_datasource.dart';
-import 'package:pos/presentation/auth/pages/login_page.dart';
-import 'package:pos/presentation/home/bloc/logout/logout_bloc.dart';
 import 'package:pos/presentation/home/pages/home_page.dart';
 import 'package:pos/presentation/home/widgets/nav_item.dart';
 import 'package:pos/presentation/setting/pages/setting_page.dart';

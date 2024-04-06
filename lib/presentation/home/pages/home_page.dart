@@ -6,8 +6,6 @@ import 'package:pos/core/components/menu_button.dart';
 import 'package:pos/core/components/search_input.dart';
 import 'package:pos/core/components/spaces.dart';
 import 'package:pos/presentation/home/bloc/product/product_bloc.dart';
-import 'package:pos/presentation/home/models/product_category.dart';
-import 'package:pos/presentation/home/models/product_model.dart';
 import 'package:pos/presentation/home/widgets/product_card.dart';
 import 'package:pos/presentation/home/widgets/product_empty.dart';
 
