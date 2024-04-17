@@ -6,7 +6,6 @@ import 'package:pos/core/components/spaces.dart';
 import 'package:pos/presentation/home/bloc/chechkout/checkout_bloc.dart';
 import 'package:pos/presentation/home/models/product_item.dart';
 import 'package:pos/presentation/order/bloc/order/order_bloc.dart';
-import 'package:pos/presentation/order/models/order_model.dart';
 import 'package:pos/presentation/order/widgets/order_card.dart';
 import 'package:pos/presentation/order/widgets/payment_cash_dialog.dart';
 import 'package:pos/presentation/order/widgets/process_button.dart';
