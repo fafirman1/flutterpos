@@ -1,4 +1,6 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
+
 
 class ProductResponseModel {
     final bool success;
@@ -74,4 +76,33 @@ class Product {
         "category": category,
         "image": image,
     };
+
+  @override
+  bool operator ==(covariant Product other) {
+    if (identical(this, other)) return true;
+  
+    return 
+      other.id == id &&
+      other.name == name &&
+      other.description == description &&
+      other.price == price &&
+      other.stock == stock &&
+      other.category == category &&
+      other.image == image &&
+      other.createdAt == createdAt &&
+      other.updatedAt == updatedAt;
+  }
+
+  @override
+  int get hashCode {
+    return id.hashCode ^
+      name.hashCode ^
+      description.hashCode ^
+      price.hashCode ^
+      stock.hashCode ^
+      category.hashCode ^
+      image.hashCode ^
+      createdAt.hashCode ^
+      updatedAt.hashCode;
+  }
 }

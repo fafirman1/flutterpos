@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pos/core/components/spaces.dart';
 import 'package:pos/core/constants/colors.dart';
 import 'package:pos/data/datasource/auth_local_datasource.dart';
 import 'package:pos/data/datasource/product_local_datasource.dart';
@@ -25,6 +26,20 @@ class _SettingPageState extends State<SettingPage> {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
+          
+          // ElevatedButton(
+          //   onPressed: () => context.push(const ManageProductPage()),
+          //   child: const Text('Manage Product'),
+          // ),
+          // const SpaceWidth(15.0),
+
+          ElevatedButton(
+            onPressed: () {}, //=> context.push(const ManagePrinterPage()),
+            child: const Text('Manage Printer'),
+          ),
+          const SpaceWidth(15.0),
+          const Divider(),
+
           BlocConsumer<ProductBloc, ProductState>(
             listener: (context, state) {
               state.maybeMap(
@@ -33,6 +48,7 @@ class _SettingPageState extends State<SettingPage> {
                   await ProductLocalDatasource.instance.removeAllProduct();
                   await ProductLocalDatasource.instance
                       .insertProduct(_.products.toList());
+
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
                       backgroundColor: AppColors.primary,
@@ -56,11 +72,12 @@ class _SettingPageState extends State<SettingPage> {
                   return const Center(
                     child: CircularProgressIndicator(),
                   );
-                },);
-              
+                },
+              );              
             },
           ),
           const Divider(),
+
           BlocConsumer<LogoutBloc, LogoutState>(
             listener: (context, state) {
               state.maybeMap(
@@ -70,7 +87,9 @@ class _SettingPageState extends State<SettingPage> {
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LoginPage()));
+                          builder: (context) => const LoginPage(),
+                      )
+                  );
                 },
               );
             },
@@ -83,6 +102,7 @@ class _SettingPageState extends State<SettingPage> {
             },
           ),
           const Divider(),
+
         ],
       ),
     );

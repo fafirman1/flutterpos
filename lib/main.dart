@@ -7,9 +7,11 @@ import 'package:pos/data/datasource/auth_remote_datasource.dart';
 import 'package:pos/data/datasource/product_remote_datasource.dart';
 import 'package:pos/presentation/auth/bloc/login/login_bloc.dart';
 import 'package:pos/presentation/auth/pages/login_page.dart';
+import 'package:pos/presentation/home/bloc/chechkout/checkout_bloc.dart';
 import 'package:pos/presentation/home/bloc/logout/logout_bloc.dart';
 import 'package:pos/presentation/home/bloc/product/product_bloc.dart';
 import 'package:pos/presentation/home/pages/dashboard_page.dart';
+import 'package:pos/presentation/order/bloc/order/order_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,6 +34,8 @@ class MyApp extends StatelessWidget {
           create: (context) => ProductBloc(ProductRemoteDatasource())
           ..add(const ProductEvent.fecthLocal()),
         ),
+        BlocProvider(create: (context) => CheckoutBloc()),
+        BlocProvider(create: (context) => OrderBloc()),
       ],
       child: MaterialApp(
         title: 'POS MWP',
